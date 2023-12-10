@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "647712572014",
+    "project_id": "easyeducation-c7a23",
+    "storage_bucket": "easyeducation-c7a23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647712572014:android:a95ec0581a68aca40ddc7f",
+        "android_client_info": {
+          "package_name": "com.vikash.easy_education"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADIQn4GwFEjh8FrP1bLV9mebz-dMSDADI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
