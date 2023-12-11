@@ -1,29 +1,28 @@
-import 'package:easy_education/utils/extensions/context_extension.dart';
-import 'package:flutter/material.dart';
+import 'dart:typed_data';
 
-class AddLogoW extends StatelessWidget {
+import 'package:easy_education/features/create_institute/presentation/widgets/image_container.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+class AddLogoW extends ConsumerWidget {
   final VoidCallback onTap;
   final Widget? child;
   final String? imageUrl;
-  const AddLogoW({super.key,required this.onTap, this.child,this.imageUrl});
+  final Uint8List? _imageBytes;
+  const AddLogoW({super.key,required this.onTap, this.child,this.imageUrl,
+    Uint8List? imageBytes,
+  }) : _imageBytes = imageBytes;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: onTap,
-      child: Container(
-        height: context.height*.13,width: context.width*.28,
-        decoration: BoxDecoration(
-          image: DecorationImage(image: imageUrl!=null?AssetImage(imageUrl!):const AssetImage("assets/chiggoslogo.png") ),
-          borderRadius: BorderRadius.circular(40),
-          color: Theme.of(context).canvasColor,
-          boxShadow: [
-            BoxShadow(color: context.theme.secondaryContainer,offset:const  Offset(3, -3) ),
-            BoxShadow(color: context.theme.surfaceVariant,blurRadius: 2,offset:const  Offset(-1, 1) ),
-          ]
-        ),
-        child:child
-      ),
-    );
+      child:
+          _imageBytes != null ? ImageContainer(image: DecorationImage(image:MemoryImage(_imageBytes)),child: child,)
+              :
+              imageUrl != null ? ImageContainer(image: DecorationImage(image:NetworkImage(imageUrl!)),child: child,)
+                  :
+                  ImageContainer(image: null,child: child,),
+      );
   }
 }

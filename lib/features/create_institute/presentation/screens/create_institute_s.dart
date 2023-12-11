@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../providers/image_picker_p.dart';
+
 class CreateInstituteS extends ConsumerStatefulWidget {
   static const routeAddress = "/createSchool";
   const CreateInstituteS({super.key});
@@ -86,19 +88,30 @@ class _CreateInstituteSState extends ConsumerState<CreateInstituteS> {
             Positioned(
               top: context.height*.01,
               left: (context.width-(context.width*.28))/2,
-              child:  AddLogoW(onTap: (){
+              child:  Consumer(builder: (context, ref, child) {
+                final image = ref.watch(imagePickerProvider);
+                return image.when(data: (data){
+                  return AddLogoW(
+                    imageBytes: data,
+                    onTap: (){
+                      ref.read(imagePickerProvider.notifier).pickImage();
+                    },child:  LayoutBuilder(
+                      builder: (context,constraints) {
+                        return Column(mainAxisAlignment: MainAxisAlignment.center,children: [
+                          Icon(Icons.add,size: constraints.biggest.height*.2,color: context.theme.secondary,),
+                          Text("Add Logo",style: GoogleFonts.aBeeZee(
+                              color: context.theme.outlineVariant,
+                              fontSize: ((constraints.biggest.height+constraints.biggest.width)*context.aspectRatio)*.15
+                          ),)
+                        ],);
+                      }
+                  ),);
+                }, error: (e,st)=> AddLogoW(onTap: (){
+                  ref.read(imagePickerProvider.notifier).pickImage();
+                }) ,
+                    loading: ()=> const RepaintBoundary(child: CircularProgressIndicator()));
 
-              },child:  LayoutBuilder(
-            builder: (context,constraints) {
-              return Column(mainAxisAlignment: MainAxisAlignment.center,children: [
-                Icon(Icons.add,size: constraints.biggest.height*.2,color: context.theme.secondary,),
-                Text("Add Logo",style: GoogleFonts.aBeeZee(
-                  color: context.theme.outlineVariant,
-                  fontSize: ((constraints.biggest.height+constraints.biggest.width)*context.aspectRatio)*.15
-                ),)
-              ],);
-            }
-          ),))
+                },))
 
         ],),
       ),);
