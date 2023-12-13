@@ -8,4 +8,5 @@ abstract interface class CreateInstituteDataSource {
   Future<InstituteModel> getInstitute({required String instituteId});
 
   Future<bool> isExistingInstitute({required String instituteId});
+
 }

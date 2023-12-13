@@ -11,6 +11,8 @@ class ScreenRoute{
     switch(settings.name){
       case "/":
         return CustomRoute(page: const HomepageS(), offset: _offset);
+        case HomepageS.routeAddress:
+        return CustomRoute(page: const HomepageS(), offset: _offset);
       case LoginS.routeAddress:
         return CustomRoute(page: const LoginS(), offset: _offset);
       case CreateInstituteS.routeAddress:

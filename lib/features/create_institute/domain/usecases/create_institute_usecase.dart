@@ -1,17 +1,27 @@
 
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:easy_education/features/create_institute/domain/repos/create_institute_repo.dart';
+import 'package:easy_education/features/create_institute/domain/repos/image_storage_repo.dart';
 import 'package:easy_education/services/email_auth_service.dart';
 
 import '../../../../services/email_auth_service_impl.dart';
 import '../../data/data_sources/create_institute_firebase_datasource_impl.dart';
+import '../../data/data_sources/firebase_storage_datasouce_impl.dart';
+import '../../data/data_sources/share_pref_data_source_impl.dart';
 import '../../data/models/institute_model.dart';
 import '../repos/create_institute_repo_impl.dart';
+import '../repos/image_storage_repo_impl.dart';
 
 class CreateInstituteUseCase{
   final CreateInstituteRepo _createInstituteRepo = CreateInstituteRepoImpl(
-    CreateInstituteFirebaseDataSourceImpl()
+    CreateInstituteFirebaseDataSourceImpl(),
+    SharePrefDataSourceImpl()
+  );
+
+  final ImageStorageRepo _imageStorageRepo = ImageStorageRepoImpl(
+    FirebaseStorageDatasourceImpl()
   );
 
 
@@ -47,13 +57,18 @@ class CreateInstituteUseCase{
     return _emailAuthService.verifyOtp(otp);
   }
 
-  InstituteModel addEmail({required String email,required InstituteModel model}){
-    return model.copyWith(email: email);
+  Future<String> uploadImage({required String filePath, required File image}){
+    return _imageStorageRepo.uploadImage(filePath: filePath, image: image);
   }
 
-  InstituteModel addLogoBytes({required Uint8List logoBytes,required InstituteModel model}){
-    return model.copyWith(logoByte: logoBytes);
+  Future<bool> deleteImage({required String imagePath}){
+    return _imageStorageRepo.deleteImage(imagePath: imagePath);
   }
+
+  Future<bool> saveInstituteEmailAndNameToLocalStorage({required String email, required String name}){
+    return _createInstituteRepo.saveInstituteEmailAndNameToLocalStorage(email: email, name: name);
+  }
+
 
 
 }

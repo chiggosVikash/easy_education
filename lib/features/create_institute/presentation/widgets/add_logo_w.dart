@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AddLogoW extends ConsumerWidget {
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Widget? child;
   final String? imageUrl;
   final Uint8List? _imageBytes;

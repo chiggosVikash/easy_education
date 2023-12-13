@@ -12,6 +12,10 @@ class CreateInstituteFirebaseDataSourceImpl
   @override
   Future<bool> createInstitute({required InstituteModel instituteModel}) async{
     try{
+      if(instituteModel.email.isEmpty){
+        throw Exception("Email id can't be empty");
+      }
+
       if(await isExistingInstitute(instituteId: instituteModel.email)){
         throw Exception('Institute already exists');
       }
@@ -66,7 +70,11 @@ class CreateInstituteFirebaseDataSourceImpl
       final institute = await firebaseFirestore.collection('institutes')
           .doc(instituteId).get(const GetOptions(source: Source.server));
       return institute.exists;
-    }catch(e){
+    }
+    on FirebaseException catch(e){
+      throw Exception(e.message);
+    }
+    catch(e){
       rethrow;
     }
   }

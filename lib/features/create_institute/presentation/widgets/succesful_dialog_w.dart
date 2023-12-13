@@ -1,12 +1,13 @@
 import 'package:easy_education/features/create_institute/presentation/widgets/create_button_w.dart';
+import 'package:easy_education/features/home/presentation/screens/home_s.dart';
 import 'package:easy_education/utils/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
 
-class SchoolCreatedSuccessDialogW extends StatelessWidget {
-  const SchoolCreatedSuccessDialogW({super.key});
+class InstituteCreatedSuccessDialogW extends StatelessWidget {
+  const InstituteCreatedSuccessDialogW({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +19,17 @@ class SchoolCreatedSuccessDialogW extends StatelessWidget {
           style: GoogleFonts.cantataOne(color: context.theme.surfaceTint,
             height: .5),))),
         content: Column(mainAxisSize: MainAxisSize.min,crossAxisAlignment: CrossAxisAlignment.center,children: [
-             Text("Your school has been created successfully .",style: TextStyle(color: context.theme.outline),),
-             SizedBox(height: context.height*.005,),
-             Text("Now create first/main branch of your school.",style: GoogleFonts.openSans(color: Colors.grey),)
+             Text("Your institute has been created successfully .",style: TextStyle(color: context.theme.outline),),
+             // SizedBox(height: context.height*.005,),
+             // Text("Now create first/main branch of your institute.",style: GoogleFonts.openSans(color: Colors.grey),)
         ]),
         actions: [
           FilledButton.tonal(onPressed: (){
             Navigator.of(context).pop();
           }, child: const Text("Cancel")),
 
-            CreateButtonW(text: "Create Branch",onPressed: (){
-
+            CreateButtonW(text: "Move to Home",onPressed: (){
+              Navigator.pushNamedAndRemoveUntil(context, HomepageS.routeAddress, (route) => false);
             // Navigator.of(context)..pop()..pop()..push(CustomRoute(page:const  CreateBranch(), offset: const Offset(1, 1)));
 
           })

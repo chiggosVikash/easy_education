@@ -1,4 +1,5 @@
 
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -17,8 +18,9 @@ class InstituteModel with _$InstituteModel{
   required String email,
   required String phone,
   required String address,
+    @Default(null)
     @JsonKey(includeFromJson: false, includeToJson: false)
-    Uint8List? logoByte,
+    File? imageFile,
     @Default(true)
     bool isActive,
     String? registrationNumber,

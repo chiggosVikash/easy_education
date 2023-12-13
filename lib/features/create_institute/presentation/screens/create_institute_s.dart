@@ -106,10 +106,13 @@ class _CreateInstituteSState extends ConsumerState<CreateInstituteS> {
                         ],);
                       }
                   ),);
-                }, error: (e,st)=> AddLogoW(onTap: (){
+                }, error: (e,st)=> AddLogoW(
+                    child: const Center(child: Text("Error")),
+                    onTap: (){
                   ref.read(imagePickerProvider.notifier).pickImage();
                 }) ,
-                    loading: ()=> const RepaintBoundary(child: CircularProgressIndicator()));
+                    loading: ()=> const AddLogoW(onTap: null,
+                    child: Center(child: RepaintBoundary(child: CircularProgressIndicator()))));
 
                 },))
 

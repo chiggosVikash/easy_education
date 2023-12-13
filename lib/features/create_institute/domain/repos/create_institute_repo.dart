@@ -7,4 +7,6 @@ abstract interface class CreateInstituteRepo {
   Future<bool> deleteInstitute({required String instituteId});
   Future<InstituteModel> getInstitute({required String instituteId});
   Future<bool> isExistingInstitute({required String instituteId});
+
+  Future<bool> saveInstituteEmailAndNameToLocalStorage({required String email, required String name});
 }

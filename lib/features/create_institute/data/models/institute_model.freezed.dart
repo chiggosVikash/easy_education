@@ -28,7 +28,7 @@ mixin _$InstituteModel {
   String get phone => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
-  Uint8List? get logoByte => throw _privateConstructorUsedError;
+  File? get imageFile => throw _privateConstructorUsedError;
   bool get isActive => throw _privateConstructorUsedError;
   String? get registrationNumber => throw _privateConstructorUsedError;
 
@@ -52,8 +52,7 @@ abstract class $InstituteModelCopyWith<$Res> {
       String email,
       String phone,
       String address,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      Uint8List? logoByte,
+      @JsonKey(includeFromJson: false, includeToJson: false) File? imageFile,
       bool isActive,
       String? registrationNumber});
 }
@@ -78,7 +77,7 @@ class _$InstituteModelCopyWithImpl<$Res, $Val extends InstituteModel>
     Object? email = null,
     Object? phone = null,
     Object? address = null,
-    Object? logoByte = freezed,
+    Object? imageFile = freezed,
     Object? isActive = null,
     Object? registrationNumber = freezed,
   }) {
@@ -111,10 +110,10 @@ class _$InstituteModelCopyWithImpl<$Res, $Val extends InstituteModel>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      logoByte: freezed == logoByte
-          ? _value.logoByte
-          : logoByte // ignore: cast_nullable_to_non_nullable
-              as Uint8List?,
+      imageFile: freezed == imageFile
+          ? _value.imageFile
+          : imageFile // ignore: cast_nullable_to_non_nullable
+              as File?,
       isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -143,8 +142,7 @@ abstract class _$$InstituteModelImplCopyWith<$Res>
       String email,
       String phone,
       String address,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      Uint8List? logoByte,
+      @JsonKey(includeFromJson: false, includeToJson: false) File? imageFile,
       bool isActive,
       String? registrationNumber});
 }
@@ -167,7 +165,7 @@ class __$$InstituteModelImplCopyWithImpl<$Res>
     Object? email = null,
     Object? phone = null,
     Object? address = null,
-    Object? logoByte = freezed,
+    Object? imageFile = freezed,
     Object? isActive = null,
     Object? registrationNumber = freezed,
   }) {
@@ -200,10 +198,10 @@ class __$$InstituteModelImplCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      logoByte: freezed == logoByte
-          ? _value.logoByte
-          : logoByte // ignore: cast_nullable_to_non_nullable
-              as Uint8List?,
+      imageFile: freezed == imageFile
+          ? _value.imageFile
+          : imageFile // ignore: cast_nullable_to_non_nullable
+              as File?,
       isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -227,7 +225,8 @@ class _$InstituteModelImpl implements _InstituteModel {
       required this.email,
       required this.phone,
       required this.address,
-      @JsonKey(includeFromJson: false, includeToJson: false) this.logoByte,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.imageFile = null,
       this.isActive = true,
       this.registrationNumber});
 
@@ -250,7 +249,7 @@ class _$InstituteModelImpl implements _InstituteModel {
   final String address;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  final Uint8List? logoByte;
+  final File? imageFile;
   @override
   @JsonKey()
   final bool isActive;
@@ -259,7 +258,7 @@ class _$InstituteModelImpl implements _InstituteModel {
 
   @override
   String toString() {
-    return 'InstituteModel(logoUrl: $logoUrl, createdDate: $createdDate, updatedDate: $updatedDate, name: $name, email: $email, phone: $phone, address: $address, logoByte: $logoByte, isActive: $isActive, registrationNumber: $registrationNumber)';
+    return 'InstituteModel(logoUrl: $logoUrl, createdDate: $createdDate, updatedDate: $updatedDate, name: $name, email: $email, phone: $phone, address: $address, imageFile: $imageFile, isActive: $isActive, registrationNumber: $registrationNumber)';
   }
 
   @override
@@ -276,7 +275,8 @@ class _$InstituteModelImpl implements _InstituteModel {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.address, address) || other.address == address) &&
-            const DeepCollectionEquality().equals(other.logoByte, logoByte) &&
+            (identical(other.imageFile, imageFile) ||
+                other.imageFile == imageFile) &&
             (identical(other.isActive, isActive) ||
                 other.isActive == isActive) &&
             (identical(other.registrationNumber, registrationNumber) ||
@@ -294,7 +294,7 @@ class _$InstituteModelImpl implements _InstituteModel {
       email,
       phone,
       address,
-      const DeepCollectionEquality().hash(logoByte),
+      imageFile,
       isActive,
       registrationNumber);
 
@@ -323,7 +323,7 @@ abstract class _InstituteModel implements InstituteModel {
       required final String phone,
       required final String address,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      final Uint8List? logoByte,
+      final File? imageFile,
       final bool isActive,
       final String? registrationNumber}) = _$InstituteModelImpl;
 
@@ -346,7 +346,7 @@ abstract class _InstituteModel implements InstituteModel {
   String get address;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  Uint8List? get logoByte;
+  File? get imageFile;
   @override
   bool get isActive;
   @override

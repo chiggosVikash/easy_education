@@ -4,12 +4,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../domain/usecases/create_institute_usecase.dart';
 
-final otpValidatorProvider = AutoDisposeNotifierProvider<OtpValidatorP,bool>(()=>OtpValidatorP());
+final otpValidatorProvider = AutoDisposeNotifierProvider<OtpValidatorP,bool?>(()=>OtpValidatorP());
 
-class OtpValidatorP extends AutoDisposeNotifier<bool>{
+class OtpValidatorP extends AutoDisposeNotifier<bool?>{
   @override
-  bool build() {
-    return false;
+  bool? build() {
+   return null;
   }
 
   bool validateOtp({required CreateInstituteUseCase createInstituteUseCase,required String otp}){
@@ -21,7 +21,7 @@ class OtpValidatorP extends AutoDisposeNotifier<bool>{
         rethrow;
       }
     }
-    return state;
+    return state ?? false;
   }
 
 
