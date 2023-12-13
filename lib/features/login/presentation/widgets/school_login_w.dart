@@ -1,3 +1,4 @@
+import 'package:easy_education/features/login/presentation/widgets/begin_login_button_w.dart';
 import 'package:easy_education/features/login/presentation/widgets/login_button_w.dart';
 import 'package:easy_education/utils/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
@@ -19,19 +20,21 @@ class SchoolLoginW extends ConsumerWidget {
       child: Column(children: [
          SizedBox(height: context.height*.02,),
       
-         TextFormField(decoration: const InputDecoration(isDense: true,labelText: "School Code",suffixIcon: Icon(Icons.code),
+         TextFormField(decoration: const InputDecoration(isDense: true,labelText: "Email ",suffixIcon: Icon(Icons.code),
          ),),
       
-         SizedBox(height: context.height*.02,),
-      
-         TextFormField(decoration: const  InputDecoration(isDense: true, labelText: "Password",suffixIcon: Icon(Icons.lock_outlined)
-          )),
+         // SizedBox(height: context.height*.02,),
+         //
+         // TextFormField(decoration: const  InputDecoration(isDense: true, labelText: "Password",suffixIcon: Icon(Icons.lock_outlined)
+         //  )),
       
          SizedBox(height: context.height*.15,),
       
-         LoginButtonW(
-          onTap: (){},
-          height: context.height*.045, width: context.width*.4),
+         // LoginButtonW(
+         //  onTap: (){},
+         //  height: context.height*.045, width: context.width*.4),
+
+        BeginLoginButtonW(onPressed: (){},),
       
          SizedBox(height: context.height*.04,),
       

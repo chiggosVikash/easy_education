@@ -3,6 +3,7 @@ import 'package:easy_education/features/create_institute/presentation/providers/
 import 'package:easy_education/features/create_institute/presentation/providers/email_validator_p.dart';
 import 'package:easy_education/features/create_institute/presentation/providers/save_institute_p.dart';
 import 'package:easy_education/features/create_institute/presentation/widgets/create_button_w.dart';
+import 'package:easy_education/features/create_institute/presentation/widgets/email_w.dart';
 import 'package:easy_education/features/create_institute/presentation/widgets/send_otp_button_w.dart';
 import 'package:easy_education/features/create_institute/presentation/widgets/succesful_dialog_w.dart';
 import 'package:easy_education/features/create_institute/presentation/widgets/verify_otp_w.dart';
@@ -105,32 +106,7 @@ class AddInstituteDetailsW extends ConsumerWidget {
 
         SizedBox(height: context.height*_verticalSpace,),
 
-        TextFormField(
-          controller: _emailController,
-          onChanged: (value) => ref.read(allowButtonEnableProvider.notifier).allowButtonEnable(email: value),
-          decoration:  InputDecoration(
-            isDense: true,
-            labelText: "Email*",
-            suffixIcon: Consumer(builder: (context, ref, child) {
-              final state = ref.watch(allowButtonEnableProvider);
-
-              final emailValidatorState = ref.watch(emailValidatorProvider);
-
-              if(emailValidatorState.isLoading){
-                return const SizedBox(
-                    height: 4,
-                    width: 4,
-                    child: RepaintBoundary(child: CircularProgressIndicator()));
-              }
-              // else if (emailValidatorState.value == true){
-              //   return const Icon(Icons.check,color: Colors.green,);
-              // }
-              return SendOtpButtonW(onPressed: state == true ?  (){
-                ref.read(emailValidatorProvider.notifier).sendOtp(userEmail: _emailController.text);
-              }: null,);
-              },),
-          ),
-        ),
+        EmailW(emailController: _emailController,),
 
          Consumer(builder: (context, ref, child) {
            final state = ref.watch(emailValidatorProvider);
