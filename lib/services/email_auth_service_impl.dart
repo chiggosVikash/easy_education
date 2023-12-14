@@ -5,6 +5,7 @@ import 'package:email_otp/email_otp.dart' as emailOtp;
 
 class EmailAuthServiceImpl implements EmailAuthService{
   final emailOtp.EmailOTP _emailOTP = emailOtp.EmailOTP();
+
   @override
   Future<bool> sendOtp() async{
     try{

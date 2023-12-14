@@ -32,9 +32,9 @@ class EmailValidatorP extends AutoDisposeAsyncNotifier<bool>{
     }
   }
 
-  bool validateOtp({required String otp}){
+  bool validateOtp({required String otp,CreateInstituteUseCase? createInstituteUseCase}){
     return ref.read(otpValidatorProvider.notifier).validateOtp(otp: otp,
-        createInstituteUseCase: _createInstituteUseCase
+        createInstituteUseCase: createInstituteUseCase ?? _createInstituteUseCase
     );
   }
 

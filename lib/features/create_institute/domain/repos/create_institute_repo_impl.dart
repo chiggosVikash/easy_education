@@ -1,14 +1,14 @@
 
+import 'package:easy_education/databases/local/local_db_query.dart';
 import 'package:easy_education/features/create_institute/data/models/institute_model.dart';
 import 'package:easy_education/features/create_institute/domain/repos/create_institute_repo.dart';
 
 import '../../data/data_sources/create_institute_data_source.dart';
-import '../../data/data_sources/create_institute_to_local.dart';
 
 class CreateInstituteRepoImpl implements CreateInstituteRepo{
 
   final CreateInstituteDataSource _createInstituteDataSource;
-  final CreateInstituteToLocal _createInstituteToLocal;
+  final LocalDbQuery _createInstituteToLocal;
 
   const CreateInstituteRepoImpl(this._createInstituteDataSource,this._createInstituteToLocal);
   @override

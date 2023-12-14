@@ -14,4 +14,12 @@ class LoginUseCase {
     return await _repository.isInstituteExist(email);
   }
 
+  Future<bool> saveInstituteEmailToLocal({required String email}) async{
+    return await _repository.saveInstituteEmailToLocal(email: email);
+  }
+
+  Future<bool> isUserExistLocally() async{
+    return await _repository.isUserExistLocally();
+  }
+
 }

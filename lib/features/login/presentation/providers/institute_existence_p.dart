@@ -14,8 +14,7 @@ class InstituteExistenceP extends AutoDisposeAsyncNotifier<bool>{
     return false;
   }
 
-  Future<void> checkInstituteExistence(String email) async{
-    print("Email $email");
+  Future<bool> checkInstituteExistence(String email) async{
     state = const AsyncLoading();
     try{
       state = AsyncData(await _loginUseCase.isInstituteExist(email));
@@ -25,7 +24,11 @@ class InstituteExistenceP extends AutoDisposeAsyncNotifier<bool>{
         rethrow;
       }
 
+
     }
+    return state.value!;
   }
+
+
 
 }

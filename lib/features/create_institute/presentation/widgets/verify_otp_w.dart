@@ -1,3 +1,4 @@
+import 'package:easy_education/features/create_institute/domain/usecases/create_institute_usecase.dart';
 import 'package:easy_education/features/create_institute/presentation/providers/add_institute_p.dart';
 import 'package:easy_education/features/create_institute/presentation/providers/email_validator_p.dart';
 import 'package:easy_education/utils/extensions/context_extension.dart';
@@ -8,12 +9,16 @@ import '../providers/otp_validator_p.dart';
 import 'verify_otp_button_w.dart';
 
 class VerifyOtpW extends ConsumerWidget{
-  final String _email;
   final TextEditingController _otpController;
+  final VoidCallback _onVerifiedSuccess;
+  final CreateInstituteUseCase? _createInstituteUseCase;
   const VerifyOtpW({Key? key,required TextEditingController otpController,
-  required String email,
+    required VoidCallback onVerifiedSuccess,
+    CreateInstituteUseCase? createInstituteUseCase
+
   }) :_otpController = otpController,
-        _email = email,
+        _onVerifiedSuccess = onVerifiedSuccess,
+        _createInstituteUseCase = createInstituteUseCase,
         super(key: key);
 
   @override
@@ -42,9 +47,12 @@ class VerifyOtpW extends ConsumerWidget{
                child: Consumer(builder: (context, ref, child) {
                 final isValid = ref.watch(otpValidatorProvider);
                  return VerifyOtpButtonW(onPressed: (){
-                   final status = ref.read(emailValidatorProvider.notifier).validateOtp(otp: _otpController.text);
+                   final status = ref.read(emailValidatorProvider.notifier).validateOtp(otp: _otpController.text,
+                        createInstituteUseCase: _createInstituteUseCase
+                   );
                    if(status == true){
-                     ref.read(addInstituteProvider.notifier).addEmail(_email);
+                      _onVerifiedSuccess();
+
                    }
 
                  },

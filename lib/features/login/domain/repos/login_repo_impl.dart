@@ -13,4 +13,14 @@ class LoginRepoImpl implements LoginRepo {
   Future<bool> isInstituteExist(String email) async {
     return await _loginDataSource.isInstituteExist(email);
   }
+
+  @override
+  Future<bool> saveInstituteEmailToLocal({required String email}) {
+    return _loginDataSource.saveInstituteEmailToLocal(email: email);
+  }
+
+  @override
+  Future<bool> isUserExistLocally() {
+    return _loginDataSource.isUserExistLocally();
+  }
 }

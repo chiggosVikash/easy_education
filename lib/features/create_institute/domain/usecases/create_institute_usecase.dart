@@ -9,7 +9,7 @@ import 'package:easy_education/services/email_auth_service.dart';
 import '../../../../services/email_auth_service_impl.dart';
 import '../../data/data_sources/create_institute_firebase_datasource_impl.dart';
 import '../../data/data_sources/firebase_storage_datasouce_impl.dart';
-import '../../data/data_sources/share_pref_data_source_impl.dart';
+import '../../../../databases/local/share_pref_data_source_impl.dart';
 import '../../data/models/institute_model.dart';
 import '../repos/create_institute_repo_impl.dart';
 import '../repos/image_storage_repo_impl.dart';

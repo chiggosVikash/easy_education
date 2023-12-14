@@ -120,7 +120,11 @@ class AddInstituteDetailsW extends ConsumerWidget {
              return Text("Error: Failed to send otp ${state.error}");
            }
            else if(state.value == true){
-             return VerifyOtpW(otpController: _otpController,email: _emailController.text.trim(),);
+             return VerifyOtpW(otpController: _otpController,
+              onVerifiedSuccess: (){
+                ref.read(addInstituteProvider.notifier).addEmail(_emailController.text.trim());
+              },
+             );
            }
            return const SizedBox();
 
