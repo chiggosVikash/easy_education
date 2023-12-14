@@ -2,7 +2,7 @@ import 'package:easy_education/features/create_institute/presentation/screens/cr
 import 'package:easy_education/features/login/presentation/widgets/create_new_institute_button_w.dart';
 import 'package:easy_education/features/login/presentation/widgets/login_text_w.dart';
 import 'package:easy_education/features/login/presentation/widgets/logo_design_w.dart';
-import 'package:easy_education/features/login/presentation/widgets/school_login_w.dart';
+import 'package:easy_education/features/login/presentation/widgets/institute_login_w.dart';
 import 'package:easy_education/utils/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

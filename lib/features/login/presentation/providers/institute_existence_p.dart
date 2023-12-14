@@ -5,6 +5,8 @@ import 'package:easy_education/features/login/domain/use_cases/login_use_case.da
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+final instituteExistenceProvider = AsyncNotifierProvider.autoDispose<InstituteExistenceP,bool>(() => InstituteExistenceP());
+
 class InstituteExistenceP extends AutoDisposeAsyncNotifier<bool>{
   final LoginUseCase _loginUseCase = LoginUseCase();
   @override
@@ -13,6 +15,7 @@ class InstituteExistenceP extends AutoDisposeAsyncNotifier<bool>{
   }
 
   Future<void> checkInstituteExistence(String email) async{
+    print("Email $email");
     state = const AsyncLoading();
     try{
       state = AsyncData(await _loginUseCase.isInstituteExist(email));
