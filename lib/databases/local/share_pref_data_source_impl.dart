@@ -6,9 +6,10 @@ class SharePrefDataSourceImpl implements LocalDbQuery{
 
   SharePrefDataSourceImpl();
 
-  Future<SharedPreferences> get _instance async{
+  Future<SharedPreferences> get _instance async {
     return await SharedPreferences.getInstance();
   }
+
   @override
   Future<String> getEmail()async{
     try{
@@ -46,8 +47,6 @@ class SharePrefDataSourceImpl implements LocalDbQuery{
       return true;
     }
     throw Exception("Failed to save email");
-
-
   }
 
   @override

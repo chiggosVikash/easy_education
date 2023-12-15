@@ -23,6 +23,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final screenRoute = ScreenRoute();
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       initialRoute: LoginS.routeAddress,
       onGenerateRoute: screenRoute.onGenerateRoute,
       title: 'Easy Education',

@@ -7,6 +7,12 @@ class AppTheme {
   static final lightTheme = ThemeData(
      useMaterial3: true,
      textTheme: GoogleFonts.robotoSlabTextTheme(),
+     inputDecorationTheme: InputDecorationTheme(
+       isDense: true,
+       border: OutlineInputBorder(
+         borderRadius: BorderRadius.circular(10)
+       )
+     ),
      colorScheme: ColorScheme.fromSeed(seedColor: Constants.primaryColor,brightness: Brightness.light ),
      appBarTheme: AppBarTheme(backgroundColor: Constants.primaryColor.withOpacity(.1))
   );

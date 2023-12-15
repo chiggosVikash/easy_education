@@ -1,3 +1,4 @@
+import 'package:easy_education/features/home/presentation/widgets/drawer_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,9 +23,9 @@ class _HomepageSState extends ConsumerState<HomepageS> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const  DrawerMenu(),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Easy Education")
+        title: const Text("Home Page"),
       ),
       body: Center(
 

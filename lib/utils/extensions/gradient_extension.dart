@@ -33,4 +33,16 @@ extension RadomGradient on BuildContext {
       // end: Alignment.bottomRight
     );
   }
+
+  BoxDecoration get customBoxDecoration => BoxDecoration(
+    color: Theme.of(this).canvasColor,
+    borderRadius: BorderRadius.circular(20),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.grey.withOpacity(.5),
+        blurRadius: 2,
+        offset: const Offset(0, 3),
+      )
+    ],
+  );
 }
