@@ -6,18 +6,15 @@ import 'package:easy_education/features/enquiry/presentation/widgets/parents_det
 import 'package:easy_education/utils/extensions/context_extension.dart';
 import 'package:easy_education/utils/extensions/gradient_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class StudentDetails extends StatefulWidget {
+class StudentDetails extends ConsumerWidget {
   const StudentDetails({super.key});
 
-  @override
-  State<StudentDetails> createState() => _StudentDetailsState();
-}
-
-class _StudentDetailsState extends State<StudentDetails> {
   final _verSpace = .02;
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const HeaderText(text: "Student Details",),
@@ -32,12 +29,13 @@ class _StudentDetailsState extends State<StudentDetails> {
                 decoration: const  InputDecoration(
                     isDense: true,labelText: "Name *"),),
               SizedBox(height: context.height*_verSpace,),
+
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,children: [
                 SizedBox(width: context.width*.42,child: const ClassField(),),
                 SizedBox(width:context.width*.42,child: const  DateOfBirthField(),)
               ],),
               SizedBox(height: context.height*_verSpace,),
-              GenderRadio(),
+              const GenderRadio(),
               SizedBox(height: context.height*_verSpace,),
               TextFormField(
                 decoration: const  InputDecoration(

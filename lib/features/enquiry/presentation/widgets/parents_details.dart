@@ -2,12 +2,13 @@ import 'package:easy_education/features/enquiry/presentation/widgets/header_text
 import 'package:easy_education/utils/extensions/context_extension.dart';
 import 'package:easy_education/utils/extensions/gradient_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ParentDetails extends StatelessWidget {
+class ParentDetails extends ConsumerWidget {
   const ParentDetails({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const HeaderText(text: "Parent Details",),

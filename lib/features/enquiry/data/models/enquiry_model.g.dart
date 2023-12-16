@@ -8,6 +8,9 @@ part of 'enquiry_model.dart';
 
 _$EnquiryModelImpl _$$EnquiryModelImplFromJson(Map<String, dynamic> json) =>
     _$EnquiryModelImpl(
+      id: json['id'] as int,
+      createdDate: json['createdDate'] as String,
+      updatedDate: json['updatedDate'] as String,
       studentDetails: StudentDetailsModel.fromJson(
           json['studentDetails'] as Map<String, dynamic>),
       contactDetails: ContactDetailsModel.fromJson(
@@ -16,6 +19,9 @@ _$EnquiryModelImpl _$$EnquiryModelImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$EnquiryModelImplToJson(_$EnquiryModelImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'createdDate': instance.createdDate,
+      'updatedDate': instance.updatedDate,
       'studentDetails': instance.studentDetails,
       'contactDetails': instance.contactDetails,
     };

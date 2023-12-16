@@ -1,4 +1,5 @@
 import 'package:easy_education/features/home/presentation/widgets/drawer_menu.dart';
+import 'package:easy_education/features/master_setting/presentation/screens/setting_menus_s.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -26,6 +27,12 @@ class _HomepageSState extends ConsumerState<HomepageS> {
       drawer: const  DrawerMenu(),
       appBar: AppBar(
         title: const Text("Home Page"),
+        actions: [
+          IconButton(onPressed: (){}, icon: const Icon(Icons.notifications)),
+          IconButton(onPressed: (){
+            Navigator.of(context).pushNamed(SettingMenusS.routeAddress);
+          }, icon: const Icon(Icons.settings)),
+        ],
       ),
       body: Center(
 

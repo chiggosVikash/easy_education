@@ -20,6 +20,9 @@ EnquiryModel _$EnquiryModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EnquiryModel {
+  int get id => throw _privateConstructorUsedError;
+  String get createdDate => throw _privateConstructorUsedError;
+  String get updatedDate => throw _privateConstructorUsedError;
   StudentDetailsModel get studentDetails => throw _privateConstructorUsedError;
   ContactDetailsModel get contactDetails => throw _privateConstructorUsedError;
 
@@ -36,7 +39,11 @@ abstract class $EnquiryModelCopyWith<$Res> {
       _$EnquiryModelCopyWithImpl<$Res, EnquiryModel>;
   @useResult
   $Res call(
-      {StudentDetailsModel studentDetails, ContactDetailsModel contactDetails});
+      {int id,
+      String createdDate,
+      String updatedDate,
+      StudentDetailsModel studentDetails,
+      ContactDetailsModel contactDetails});
 
   $StudentDetailsModelCopyWith<$Res> get studentDetails;
   $ContactDetailsModelCopyWith<$Res> get contactDetails;
@@ -55,10 +62,25 @@ class _$EnquiryModelCopyWithImpl<$Res, $Val extends EnquiryModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
+    Object? createdDate = null,
+    Object? updatedDate = null,
     Object? studentDetails = null,
     Object? contactDetails = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdDate: null == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedDate: null == updatedDate
+          ? _value.updatedDate
+          : updatedDate // ignore: cast_nullable_to_non_nullable
+              as String,
       studentDetails: null == studentDetails
           ? _value.studentDetails
           : studentDetails // ignore: cast_nullable_to_non_nullable
@@ -96,7 +118,11 @@ abstract class _$$EnquiryModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {StudentDetailsModel studentDetails, ContactDetailsModel contactDetails});
+      {int id,
+      String createdDate,
+      String updatedDate,
+      StudentDetailsModel studentDetails,
+      ContactDetailsModel contactDetails});
 
   @override
   $StudentDetailsModelCopyWith<$Res> get studentDetails;
@@ -115,10 +141,25 @@ class __$$EnquiryModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
+    Object? createdDate = null,
+    Object? updatedDate = null,
     Object? studentDetails = null,
     Object? contactDetails = null,
   }) {
     return _then(_$EnquiryModelImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+      createdDate: null == createdDate
+          ? _value.createdDate
+          : createdDate // ignore: cast_nullable_to_non_nullable
+              as String,
+      updatedDate: null == updatedDate
+          ? _value.updatedDate
+          : updatedDate // ignore: cast_nullable_to_non_nullable
+              as String,
       studentDetails: null == studentDetails
           ? _value.studentDetails
           : studentDetails // ignore: cast_nullable_to_non_nullable
@@ -135,12 +176,22 @@ class __$$EnquiryModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EnquiryModelImpl extends _EnquiryModel {
   _$EnquiryModelImpl(
-      {required this.studentDetails, required this.contactDetails})
+      {required this.id,
+      required this.createdDate,
+      required this.updatedDate,
+      required this.studentDetails,
+      required this.contactDetails})
       : super._();
 
   factory _$EnquiryModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$EnquiryModelImplFromJson(json);
 
+  @override
+  final int id;
+  @override
+  final String createdDate;
+  @override
+  final String updatedDate;
   @override
   final StudentDetailsModel studentDetails;
   @override
@@ -148,7 +199,7 @@ class _$EnquiryModelImpl extends _EnquiryModel {
 
   @override
   String toString() {
-    return 'EnquiryModel(studentDetails: $studentDetails, contactDetails: $contactDetails)';
+    return 'EnquiryModel(id: $id, createdDate: $createdDate, updatedDate: $updatedDate, studentDetails: $studentDetails, contactDetails: $contactDetails)';
   }
 
   @override
@@ -156,6 +207,11 @@ class _$EnquiryModelImpl extends _EnquiryModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$EnquiryModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.createdDate, createdDate) ||
+                other.createdDate == createdDate) &&
+            (identical(other.updatedDate, updatedDate) ||
+                other.updatedDate == updatedDate) &&
             (identical(other.studentDetails, studentDetails) ||
                 other.studentDetails == studentDetails) &&
             (identical(other.contactDetails, contactDetails) ||
@@ -164,7 +220,8 @@ class _$EnquiryModelImpl extends _EnquiryModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, studentDetails, contactDetails);
+  int get hashCode => Object.hash(runtimeType, id, createdDate, updatedDate,
+      studentDetails, contactDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -182,13 +239,22 @@ class _$EnquiryModelImpl extends _EnquiryModel {
 
 abstract class _EnquiryModel extends EnquiryModel {
   factory _EnquiryModel(
-      {required final StudentDetailsModel studentDetails,
+      {required final int id,
+      required final String createdDate,
+      required final String updatedDate,
+      required final StudentDetailsModel studentDetails,
       required final ContactDetailsModel contactDetails}) = _$EnquiryModelImpl;
   _EnquiryModel._() : super._();
 
   factory _EnquiryModel.fromJson(Map<String, dynamic> json) =
       _$EnquiryModelImpl.fromJson;
 
+  @override
+  int get id;
+  @override
+  String get createdDate;
+  @override
+  String get updatedDate;
   @override
   StudentDetailsModel get studentDetails;
   @override

@@ -2,18 +2,15 @@ import 'package:easy_education/features/enquiry/presentation/widgets/header_text
 import 'package:easy_education/utils/extensions/context_extension.dart';
 import 'package:easy_education/utils/extensions/gradient_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ContactDetails extends StatefulWidget {
+class ContactDetails extends ConsumerWidget {
   final double verSpace;
   const ContactDetails({super.key,required this.verSpace});
 
-  @override
-  State<ContactDetails> createState() => _ContactDetailsState();
-}
 
-class _ContactDetailsState extends State<ContactDetails> {
-  @override
-  Widget build(BuildContext context) {
+@override
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start,children: [
       const HeaderText(text: "Contact Information"),
       SizedBox(height: context.height*.01,),
@@ -27,24 +24,24 @@ class _ContactDetailsState extends State<ContactDetails> {
             TextFormField(
               decoration: const  InputDecoration(
                   isDense: true,labelText: "Phone No *"),),
-            SizedBox(height: context.height*widget.verSpace,),
+            SizedBox(height: context.height*verSpace,),
             TextFormField(
               decoration: const  InputDecoration(
                   isDense: true,labelText: "Email *"),),
-            SizedBox(height: context.height*widget.verSpace,),
+            SizedBox(height: context.height*verSpace,),
             TextFormField(
               decoration: const  InputDecoration(
                   isDense: true,labelText: "Father's Phone No *"),),
-            SizedBox(height: context.height*widget.verSpace,),
+            SizedBox(height: context.height*verSpace,),
             TextFormField(
               decoration: const  InputDecoration(
                   isDense: true,labelText: "Father's Email "),),
-            SizedBox(height: context.height*widget.verSpace,),
+            SizedBox(height: context.height*verSpace,),
             TextFormField(
               decoration: const  InputDecoration(
                   isDense: true,labelText: "Mother's Phone No "),),
 
-            SizedBox(height: context.height*widget.verSpace,),
+            SizedBox(height: context.height*verSpace,),
             TextFormField(
               decoration: const  InputDecoration(
                   isDense: true,labelText: "Mother's Email "),),
@@ -57,3 +54,5 @@ class _ContactDetailsState extends State<ContactDetails> {
     ],);
   }
 }
+
+

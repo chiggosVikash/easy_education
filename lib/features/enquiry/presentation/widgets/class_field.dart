@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ClassField extends StatelessWidget {
+class ClassField extends ConsumerWidget {
   const ClassField({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return DropdownButtonFormField(
       decoration: const InputDecoration(
             isDense: true, labelText: "Class *",),
