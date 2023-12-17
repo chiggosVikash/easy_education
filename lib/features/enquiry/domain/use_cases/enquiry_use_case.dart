@@ -1,5 +1,6 @@
 
 import 'package:easy_education/features/enquiry/domain/repos/enquiry_repo.dart';
+import 'package:easy_education/features/master_setting/data/models/master_setting_model.dart';
 
 import '../../data/models/enquiry_model.dart';
 
@@ -38,5 +39,9 @@ class EnquiryUseCase {
     } catch (e) {
       rethrow;
     }
+  }
+
+ Future<List<MasterSettingModel>> getClassesOrBatch() async {
+      return await _enquiryRepository.getClassesOrBatch();
   }
 }

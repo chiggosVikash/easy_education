@@ -5,7 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ParentDetails extends ConsumerWidget {
-  const ParentDetails({super.key});
+  final TextEditingController _motherNameController;
+  final TextEditingController _fatherNameController;
+  final TextEditingController _fatherOccupationController;
+  final TextEditingController _motherOccupationController;
+
+  const ParentDetails({super.key,
+    required TextEditingController motherNameController,
+    required TextEditingController fatherNameController,
+    required TextEditingController fatherOccupationController,
+    required TextEditingController motherOccupationController,
+  }) : _motherNameController = motherNameController,
+        _fatherNameController = fatherNameController,
+        _fatherOccupationController = fatherOccupationController,
+        _motherOccupationController = motherOccupationController;
+
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,19 +35,27 @@ class ParentDetails extends ConsumerWidget {
             children: [
               TextFormField(
                 decoration: const  InputDecoration(
-                    isDense: true,labelText: "Father's Name *"),),
+                    isDense: true,labelText: "Father's Name *"),
+                controller: _fatherNameController,
+              ),
               SizedBox(height: context.height*.02,),
               TextFormField(
                 decoration: const  InputDecoration(
-                    isDense: true,labelText: "Father's Occupation *"),),
+                    isDense: true,labelText: "Father's Occupation *"),
+                controller: _fatherOccupationController,
+              ),
               SizedBox(height: context.height*.02,),
               TextFormField(
                 decoration: const  InputDecoration(
-                    isDense: true,labelText: "Mother's Name *"),),
+                    isDense: true,labelText: "Mother's Name *"),
+                controller: _motherNameController,
+              ),
               SizedBox(height: context.height*.02,),
               TextFormField(
                 decoration: const  InputDecoration(
-                    isDense: true,labelText: "Mother's Occupation *"),),
+                    isDense: true,labelText: "Mother's Occupation *"),
+                controller: _motherOccupationController,
+              ),
             ],
           ),
         ),

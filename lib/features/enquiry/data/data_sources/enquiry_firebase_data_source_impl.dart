@@ -1,11 +1,14 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:easy_education/features/enquiry/data/models/enquiry_model.dart';
-
+import 'package:easy_education/features/master_setting/data/data_sources/master_setting_data_source.dart';
+import 'package:easy_education/features/master_setting/data/models/master_setting_model.dart';
+import '../../../master_setting/data/data_sources/master_settings_firebase_data_source_impl.dart';
 import 'enquiry_data_source.dart';
 
 class EnquiryFirebaseDataSourceImpl implements EnquiryDataSource{
   final _firestore = FirebaseFirestore.instance;
+  final MasterSettingDataSource _masterSettingDataSource = MasterSettingFirebaseDataSourceImpl();
   @override
   Future<bool> addEnquiry(EnquiryModel enquiryModel) async{
     try{
@@ -36,8 +39,7 @@ class EnquiryFirebaseDataSourceImpl implements EnquiryDataSource{
   Future<List<EnquiryModel>> getAllEnquiries() async{
     try{
       final snapshot = await _firestore.collection("enquiries").get();
-      final enquiries = snapshot.docs.map((e) => EnquiryModel.fromJson(e.data())).toList();
-      return enquiries;
+      return snapshot.docs.map((e) => EnquiryModel.fromJson(e.data())).toList();
     }catch(e){
       rethrow;
     }
@@ -50,8 +52,16 @@ class EnquiryFirebaseDataSourceImpl implements EnquiryDataSource{
       if(!snapshot.exists || snapshot.data() == null){
         throw Exception("Enquiry with id $id does not exist");
       }
-      final enquiry = EnquiryModel.fromJson(snapshot.data()!);
-      return enquiry;
+      return EnquiryModel.fromJson(snapshot.data()!);
+    }catch(e){
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<MasterSettingModel>> getClassesOrBatch() async{
+    try{
+      return await _masterSettingDataSource.getSettings(settingType: "Batch");
     }catch(e){
       rethrow;
     }

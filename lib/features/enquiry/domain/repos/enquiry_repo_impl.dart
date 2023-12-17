@@ -2,6 +2,7 @@
 import 'package:easy_education/features/enquiry/data/data_sources/enquiry_data_source.dart';
 import 'package:easy_education/features/enquiry/data/models/enquiry_model.dart';
 import 'package:easy_education/features/enquiry/domain/repos/enquiry_repo.dart';
+import 'package:easy_education/features/master_setting/data/models/master_setting_model.dart';
 
 class EnquiryRepoImpl implements EnquiryRepo{
   final EnquiryDataSource _dataSource;
@@ -24,6 +25,11 @@ class EnquiryRepoImpl implements EnquiryRepo{
   @override
   Future<EnquiryModel> getEnquiry(int id) {
     return _dataSource.getEnquiry(id);
+  }
+
+  @override
+  Future<List<MasterSettingModel>> getClassesOrBatch() {
+    return _dataSource.getClassesOrBatch();
   }
 
 }

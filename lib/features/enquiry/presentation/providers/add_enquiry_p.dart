@@ -45,5 +45,12 @@ class AddEnquiryP extends Notifier<EnquiryModel>{
         ),
     );
   }
+  void addClassOrBatch(String classOrBatch){
+    state = state.copyWith(
+        studentDetails: state.studentDetails.copyWith(
+            currentClass: classOrBatch,
+        ),
+    );
+  }
 
 }
