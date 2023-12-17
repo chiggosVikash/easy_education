@@ -53,4 +53,39 @@ class AddEnquiryP extends Notifier<EnquiryModel>{
     );
   }
 
+  void assignFields(String fullName,
+      String tempAddress,
+      String permAddress,
+      String motherName,
+      String fatherName,
+      String currentSchool,
+      String phone,
+      String email,
+      String fatherEmail,
+      String motherEmail,
+      String fatherPhone,
+      String motherPhone
+
+      ){
+    state = state.copyWith(
+        studentDetails: state.studentDetails.copyWith(
+            fullName: fullName,
+            tempAddress: tempAddress,
+            permAddress: permAddress,
+            motherName: motherName,
+            fatherName: fatherName,
+            currentSchool: currentSchool,
+        ),
+      contactDetails: state.contactDetails.copyWith(
+          phone: phone,
+          email: email,
+          fatherEmail: fatherEmail,
+          motherEmail: motherEmail,
+          fatherPhone: fatherPhone,
+          motherPhone: motherPhone,
+
+      ),
+    );
+  }
+
 }
