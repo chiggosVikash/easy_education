@@ -3,6 +3,7 @@
 import 'package:easy_education/features/enquiry/data/models/contact_details_model.dart';
 import 'package:easy_education/features/enquiry/data/models/enquiry_model.dart';
 import 'package:easy_education/features/enquiry/data/models/student_details_model.dart';
+import 'package:easy_education/features/enquiry/presentation/providers/save_enquiry_p.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final addEnquiryProvider = NotifierProvider<AddEnquiryP, EnquiryModel>(() => AddEnquiryP());
@@ -53,22 +54,26 @@ class AddEnquiryP extends Notifier<EnquiryModel>{
     );
   }
 
-  void assignFields(String fullName,
-      String tempAddress,
-      String permAddress,
-      String motherName,
-      String fatherName,
-      String currentSchool,
-      String phone,
-      String email,
-      String fatherEmail,
-      String motherEmail,
-      String fatherPhone,
-      String motherPhone
+  void assignFields({required String fullName,
+    required String tempAddress,
+    required String permAddress,
+    required String motherName,
+    required String fatherName,
+    required String currentSchool,
+    required String phone,
+    required String email,
+    required String fatherEmail,
+    required String motherEmail,
+    required String fatherPhone,
+    required String motherPhone,
+    required String fatherOccupation,
+    required String motherOccupation,
 
-      ){
+  }){
     state = state.copyWith(
         studentDetails: state.studentDetails.copyWith(
+            fatherOccupation: fatherOccupation,
+            motherOccupation: motherOccupation,
             fullName: fullName,
             tempAddress: tempAddress,
             permAddress: permAddress,
@@ -86,6 +91,11 @@ class AddEnquiryP extends Notifier<EnquiryModel>{
 
       ),
     );
+  }
+
+  void saveEnquiry(){
+    print("save function called");
+    ref.read(saveEnquiryProvider.notifier).saveEnquiry(state);
   }
 
 }

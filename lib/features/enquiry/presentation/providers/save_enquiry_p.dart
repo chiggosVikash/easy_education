@@ -5,6 +5,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../domain/use_cases/enquiry_use_case.dart';
+
+final saveEnquiryProvider = AsyncNotifierProvider<SaveEnquiryP,bool>(() => SaveEnquiryP());
+
 class SaveEnquiryP extends AsyncNotifier<bool>{
   final _enquiryUseCase = EnquiryUseCase(
     EnquiryRepoImpl(
@@ -22,6 +25,7 @@ class SaveEnquiryP extends AsyncNotifier<bool>{
       final status = await _enquiryUseCase.addEnquiry(enquiryModel);
       if(status){
         state = const AsyncData(true);
+        return;
       }
       throw Exception("Error: Enquiry not saved");
 

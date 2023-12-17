@@ -12,9 +12,12 @@ class EnquiryFirebaseDataSourceImpl implements EnquiryDataSource{
   @override
   Future<bool> addEnquiry(EnquiryModel enquiryModel) async{
     try{
+       var json = enquiryModel.toJson();
+       json["studentDetails"] = enquiryModel.studentDetails.toJson();
+        json["contactDetails"] = enquiryModel.contactDetails.toJson();
       await _firestore.collection("enquiries")
-          .doc("${enquiryModel.id}")
-            .set(enquiryModel.toJson(),
+          .doc(enquiryModel.id.toString())
+            .set(json,
               SetOptions(merge: true),
       );
       return true;
