@@ -69,5 +69,15 @@ class EnquiryFirebaseDataSourceImpl implements EnquiryDataSource{
       rethrow;
     }
   }
+
+  @override
+  Future<List<EnquiryModel>> getEnquiryLazy({required int limit}) async{
+    try{
+      final snapshot = await _firestore.collection("enquiries").orderBy("id").startAfter(4).limit(limit).get();
+      return snapshot.docs.map((e) => EnquiryModel.fromJson(e.data())).toList();
+    }catch(e){
+      rethrow;
+    }
+  }
   
 }

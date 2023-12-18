@@ -12,6 +12,8 @@ class EnquiryModel with _$EnquiryModel{
     required int id,
     required String createdDate,
     required String updatedDate,
+    @Default(false)
+    bool? isAdmissionDone,
     required StudentDetailsModel studentDetails,
     required ContactDetailsModel contactDetails,
   }) = _EnquiryModel;

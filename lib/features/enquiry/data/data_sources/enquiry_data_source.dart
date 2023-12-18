@@ -8,4 +8,6 @@ abstract interface class EnquiryDataSource {
   Future<List<EnquiryModel>> getAllEnquiries();
   Future<EnquiryModel> getEnquiry(int id);
   Future<List<MasterSettingModel>> getClassesOrBatch();
+
+  Future<List<EnquiryModel>> getEnquiryLazy({required int limit});
 }

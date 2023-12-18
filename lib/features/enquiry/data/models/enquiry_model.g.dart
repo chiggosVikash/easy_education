@@ -11,6 +11,7 @@ _$EnquiryModelImpl _$$EnquiryModelImplFromJson(Map<String, dynamic> json) =>
       id: json['id'] as int,
       createdDate: json['createdDate'] as String,
       updatedDate: json['updatedDate'] as String,
+      isAdmissionDone: json['isAdmissionDone'] as bool? ?? false,
       studentDetails: StudentDetailsModel.fromJson(
           json['studentDetails'] as Map<String, dynamic>),
       contactDetails: ContactDetailsModel.fromJson(
@@ -22,6 +23,7 @@ Map<String, dynamic> _$$EnquiryModelImplToJson(_$EnquiryModelImpl instance) =>
       'id': instance.id,
       'createdDate': instance.createdDate,
       'updatedDate': instance.updatedDate,
+      'isAdmissionDone': instance.isAdmissionDone,
       'studentDetails': instance.studentDetails,
       'contactDetails': instance.contactDetails,
     };

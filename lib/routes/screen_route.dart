@@ -2,6 +2,7 @@
 import 'package:easy_education/features/admission/presentation/screens/new_admission_s.dart';
 import 'package:easy_education/features/create_institute/presentation/screens/create_institute_s.dart';
 import 'package:easy_education/features/enquiry/presentation/screens/enquiry_s.dart';
+import 'package:easy_education/features/enquiry/presentation/screens/view_enquiry_s.dart';
 import 'package:easy_education/features/home/presentation/screens/home_s.dart';
 import 'package:easy_education/features/login/presentation/screens/login_s.dart';
 import 'package:easy_education/features/master_setting/presentation/screens/setting_menus_s.dart';
@@ -32,6 +33,8 @@ class ScreenRoute{
       case ViewMasterSettingsS.routeAddress:
         final setting = settings.arguments as SettingModel;
         return CustomRoute(page: ViewMasterSettingsS(setting: setting,), offset: _offset);
+      case ViewEnquiryS.routeAddress:
+        return CustomRoute(page: const ViewEnquiryS(), offset: _offset);
       default:
         return MaterialPageRoute(builder: (context)=> const Scaffold(
           body: Center(child: Text("404"),),

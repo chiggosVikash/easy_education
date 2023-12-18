@@ -1,4 +1,5 @@
 
+import 'package:easy_education/features/enquiry/data/models/enquiry_vs_admission_chat_data_model.dart';
 import 'package:easy_education/features/enquiry/domain/repos/enquiry_repo.dart';
 import 'package:easy_education/features/master_setting/data/models/master_setting_model.dart';
 
@@ -26,11 +27,7 @@ class EnquiryUseCase {
   }
 
   Future<List<EnquiryModel>> getAllEnquiries() async {
-    try {
       return await _enquiryRepository.getAllEnquiries();
-    } catch (e) {
-      rethrow;
-    }
   }
 
   Future<EnquiryModel> getEnquiry(int id) async {
@@ -43,5 +40,19 @@ class EnquiryUseCase {
 
  Future<List<MasterSettingModel>> getClassesOrBatch() async {
       return await _enquiryRepository.getClassesOrBatch();
+  }
+
+  Future<List<EnquiryVsAdmissionChartDataModel>> getAdmissionDoneEnquiries(List<EnquiryModel> totalEnquiries) async {
+    final List<EnquiryVsAdmissionChartDataModel> admissionDoneEnquiries;
+
+    for(var enquiry in totalEnquiries){
+      if(enquiry.)
+    }
+
+
+  }
+
+  Future<List<EnquiryModel>> getAdmissionNotDoneEnquiries(List<EnquiryModel> totalEnquiries) async {
+      return totalEnquiries.where((element) => element.isAdmissionDone == false).toList();
   }
 }

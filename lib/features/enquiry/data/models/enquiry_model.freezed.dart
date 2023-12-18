@@ -23,6 +23,7 @@ mixin _$EnquiryModel {
   int get id => throw _privateConstructorUsedError;
   String get createdDate => throw _privateConstructorUsedError;
   String get updatedDate => throw _privateConstructorUsedError;
+  bool? get isAdmissionDone => throw _privateConstructorUsedError;
   StudentDetailsModel get studentDetails => throw _privateConstructorUsedError;
   ContactDetailsModel get contactDetails => throw _privateConstructorUsedError;
 
@@ -42,6 +43,7 @@ abstract class $EnquiryModelCopyWith<$Res> {
       {int id,
       String createdDate,
       String updatedDate,
+      bool? isAdmissionDone,
       StudentDetailsModel studentDetails,
       ContactDetailsModel contactDetails});
 
@@ -65,6 +67,7 @@ class _$EnquiryModelCopyWithImpl<$Res, $Val extends EnquiryModel>
     Object? id = null,
     Object? createdDate = null,
     Object? updatedDate = null,
+    Object? isAdmissionDone = freezed,
     Object? studentDetails = null,
     Object? contactDetails = null,
   }) {
@@ -81,6 +84,10 @@ class _$EnquiryModelCopyWithImpl<$Res, $Val extends EnquiryModel>
           ? _value.updatedDate
           : updatedDate // ignore: cast_nullable_to_non_nullable
               as String,
+      isAdmissionDone: freezed == isAdmissionDone
+          ? _value.isAdmissionDone
+          : isAdmissionDone // ignore: cast_nullable_to_non_nullable
+              as bool?,
       studentDetails: null == studentDetails
           ? _value.studentDetails
           : studentDetails // ignore: cast_nullable_to_non_nullable
@@ -121,6 +128,7 @@ abstract class _$$EnquiryModelImplCopyWith<$Res>
       {int id,
       String createdDate,
       String updatedDate,
+      bool? isAdmissionDone,
       StudentDetailsModel studentDetails,
       ContactDetailsModel contactDetails});
 
@@ -144,6 +152,7 @@ class __$$EnquiryModelImplCopyWithImpl<$Res>
     Object? id = null,
     Object? createdDate = null,
     Object? updatedDate = null,
+    Object? isAdmissionDone = freezed,
     Object? studentDetails = null,
     Object? contactDetails = null,
   }) {
@@ -160,6 +169,10 @@ class __$$EnquiryModelImplCopyWithImpl<$Res>
           ? _value.updatedDate
           : updatedDate // ignore: cast_nullable_to_non_nullable
               as String,
+      isAdmissionDone: freezed == isAdmissionDone
+          ? _value.isAdmissionDone
+          : isAdmissionDone // ignore: cast_nullable_to_non_nullable
+              as bool?,
       studentDetails: null == studentDetails
           ? _value.studentDetails
           : studentDetails // ignore: cast_nullable_to_non_nullable
@@ -179,6 +192,7 @@ class _$EnquiryModelImpl extends _EnquiryModel {
       {required this.id,
       required this.createdDate,
       required this.updatedDate,
+      this.isAdmissionDone = false,
       required this.studentDetails,
       required this.contactDetails})
       : super._();
@@ -193,13 +207,16 @@ class _$EnquiryModelImpl extends _EnquiryModel {
   @override
   final String updatedDate;
   @override
+  @JsonKey()
+  final bool? isAdmissionDone;
+  @override
   final StudentDetailsModel studentDetails;
   @override
   final ContactDetailsModel contactDetails;
 
   @override
   String toString() {
-    return 'EnquiryModel(id: $id, createdDate: $createdDate, updatedDate: $updatedDate, studentDetails: $studentDetails, contactDetails: $contactDetails)';
+    return 'EnquiryModel(id: $id, createdDate: $createdDate, updatedDate: $updatedDate, isAdmissionDone: $isAdmissionDone, studentDetails: $studentDetails, contactDetails: $contactDetails)';
   }
 
   @override
@@ -212,6 +229,8 @@ class _$EnquiryModelImpl extends _EnquiryModel {
                 other.createdDate == createdDate) &&
             (identical(other.updatedDate, updatedDate) ||
                 other.updatedDate == updatedDate) &&
+            (identical(other.isAdmissionDone, isAdmissionDone) ||
+                other.isAdmissionDone == isAdmissionDone) &&
             (identical(other.studentDetails, studentDetails) ||
                 other.studentDetails == studentDetails) &&
             (identical(other.contactDetails, contactDetails) ||
@@ -221,7 +240,7 @@ class _$EnquiryModelImpl extends _EnquiryModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, id, createdDate, updatedDate,
-      studentDetails, contactDetails);
+      isAdmissionDone, studentDetails, contactDetails);
 
   @JsonKey(ignore: true)
   @override
@@ -242,6 +261,7 @@ abstract class _EnquiryModel extends EnquiryModel {
       {required final int id,
       required final String createdDate,
       required final String updatedDate,
+      final bool? isAdmissionDone,
       required final StudentDetailsModel studentDetails,
       required final ContactDetailsModel contactDetails}) = _$EnquiryModelImpl;
   _EnquiryModel._() : super._();
@@ -255,6 +275,8 @@ abstract class _EnquiryModel extends EnquiryModel {
   String get createdDate;
   @override
   String get updatedDate;
+  @override
+  bool? get isAdmissionDone;
   @override
   StudentDetailsModel get studentDetails;
   @override
