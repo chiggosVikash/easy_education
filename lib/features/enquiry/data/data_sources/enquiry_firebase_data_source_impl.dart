@@ -6,7 +6,7 @@ import 'package:easy_education/features/master_setting/data/models/master_settin
 import '../../../master_setting/data/data_sources/master_settings_firebase_data_source_impl.dart';
 import 'enquiry_data_source.dart';
 
-class EnquiryFirebaseDataSourceImpl implements EnquiryDataSource{
+class EnquiryFirebaseDataSourceImpl implements FirebaseLazyFetch{
   final _firestore = FirebaseFirestore.instance;
   final MasterSettingDataSource _masterSettingDataSource = MasterSettingFirebaseDataSourceImpl();
   @override
@@ -71,9 +71,36 @@ class EnquiryFirebaseDataSourceImpl implements EnquiryDataSource{
   }
 
   @override
-  Future<List<EnquiryModel>> getEnquiryLazy({required int limit}) async{
+  Future<List<EnquiryModel>> getEnquiryLazy({required int limit,required int lastId}) async{
     try{
-      final snapshot = await _firestore.collection("enquiries").orderBy("id").startAfter(4).limit(limit).get();
+      final snapshot = await _firestore.collection("enquiries")
+          .orderBy("id")
+          .startAfter([lastId])
+          .limit(limit).get();
+
+      return snapshot.docs.map((e) => EnquiryModel.fromJson(e.data())).toList();
+    }catch(e){
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<EnquiryModel>> getLimitedEnquiries({required int limit}) async{
+    try{
+      final snapshot = await _firestore.collection("enquiries").orderBy("id").limit(limit).get();
+      return snapshot.docs.map((e) => EnquiryModel.fromJson(e.data())).toList();
+    }catch(e){
+      rethrow;
+    }
+  }
+
+  @override
+  Future<List<EnquiryModel>> getLast30DaysEnquiries() async{
+    try{
+      final snapshot = await _firestore.collection("enquiries")
+          .where("id",isGreaterThanOrEqualTo: DateTime.now()
+          .subtract(const Duration(days: 30)).millisecondsSinceEpoch)
+          .get();
       return snapshot.docs.map((e) => EnquiryModel.fromJson(e.data())).toList();
     }catch(e){
       rethrow;

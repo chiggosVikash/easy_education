@@ -9,5 +9,13 @@ abstract interface class EnquiryDataSource {
   Future<EnquiryModel> getEnquiry(int id);
   Future<List<MasterSettingModel>> getClassesOrBatch();
 
-  Future<List<EnquiryModel>> getEnquiryLazy({required int limit});
+  Future<List<EnquiryModel>> getLimitedEnquiries({required int limit});
+
+  Future<List<EnquiryModel>> getLast30DaysEnquiries();
+
 }
+
+abstract  interface class FirebaseLazyFetch  extends EnquiryDataSource{
+  Future<List<EnquiryModel>> getEnquiryLazy({required int limit,required int lastId});
+}
+

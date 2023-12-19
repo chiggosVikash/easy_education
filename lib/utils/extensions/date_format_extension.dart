@@ -15,4 +15,17 @@ extension DateFormatExtension on String{
     }
 
   }
+
+  String get onlyDate{
+    try{
+      if(isEmpty){
+        throw Exception("Invalid date");
+      }
+      final date = DateTime.parse(this);
+      return "${date.year}-${date.month}-${date.day}";
+    }catch(e){
+      rethrow;
+    }
+
+  }
 }
