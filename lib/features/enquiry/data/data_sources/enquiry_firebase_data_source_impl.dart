@@ -41,7 +41,7 @@ class EnquiryFirebaseDataSourceImpl implements FirebaseLazyFetch{
   @override
   Future<List<EnquiryModel>> getAllEnquiries() async{
     try{
-      final snapshot = await _firestore.collection("enquiries").get();
+      final snapshot = await _firestore.collection("enquiries").orderBy("id",descending: true).get();
       return snapshot.docs.map((e) => EnquiryModel.fromJson(e.data())).toList();
     }catch(e){
       rethrow;
@@ -74,7 +74,7 @@ class EnquiryFirebaseDataSourceImpl implements FirebaseLazyFetch{
   Future<List<EnquiryModel>> getEnquiryLazy({required int limit,required int lastId}) async{
     try{
       final snapshot = await _firestore.collection("enquiries")
-          .orderBy("id")
+          .orderBy("id",descending: true)
           .startAfter([lastId])
           .limit(limit).get();
 
@@ -87,7 +87,7 @@ class EnquiryFirebaseDataSourceImpl implements FirebaseLazyFetch{
   @override
   Future<List<EnquiryModel>> getLimitedEnquiries({required int limit}) async{
     try{
-      final snapshot = await _firestore.collection("enquiries").orderBy("id").limit(limit).get();
+      final snapshot = await _firestore.collection("enquiries").orderBy("id",descending: true).limit(limit).get();
       return snapshot.docs.map((e) => EnquiryModel.fromJson(e.data())).toList();
     }catch(e){
       rethrow;

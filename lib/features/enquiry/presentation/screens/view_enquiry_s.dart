@@ -41,7 +41,7 @@ class _ViewEnquirySState extends ConsumerState<ViewEnquiryS>{
               if(enquiries is AsyncError){
                 return const Text("Error");
               }else if (enquiries is AsyncLoading) {
-                return const Center(child: CircularProgressIndicator(),);
+                return const SizedBox();
               }
               final chartData = ref.watch(getLast30DaysEnquiriesProvider.notifier).getEnquiryVsAdmissionChartData();
               return AdmissionVsEnquiryGraphW(

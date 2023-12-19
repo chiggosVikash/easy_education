@@ -14,6 +14,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class EnquiryS extends ConsumerStatefulWidget{
   static const routeAddress = "/enquiry";
+
   const EnquiryS({super.key});
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _EnquirySState();
