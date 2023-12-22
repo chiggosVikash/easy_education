@@ -83,7 +83,11 @@ class _EnquiryWState extends ConsumerState<EnquiryW> {
             ),
             isThreeLine: true,
 
-            trailing: FilledButton.tonal(onPressed: (){}, child: const Text("Admission")),
+            trailing: widget._enquiries[index].isAdmissionDone == true
+                ?
+                  const Icon(Icons.check,color: Colors.green,)
+                :
+                  FilledButton.tonal(onPressed: (){}, child: const Text("Admission")),
           ),
         ),
       );

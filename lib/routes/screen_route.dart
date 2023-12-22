@@ -10,6 +10,7 @@ import 'package:easy_education/features/master_setting/presentation/screens/view
 import 'package:easy_education/routes/custom_route.dart';
 import 'package:flutter/material.dart';
 
+import '../features/enquiry/data/models/enquiry_model.dart';
 import '../features/master_setting/data/models/setting_model.dart';
 
 class ScreenRoute{
@@ -25,7 +26,8 @@ class ScreenRoute{
       case CreateInstituteS.routeAddress:
         return CustomRoute(page: const CreateInstituteS(), offset: _offset);
       case EnquiryS.routeAddress:
-        return CustomRoute(page: const EnquiryS(), offset: _offset);
+        final args = settings.arguments as EnquiryModel?;
+        return CustomRoute(page: EnquiryS(enquiryModel: args,), offset: _offset);
       case NewAdmission.routeAddress:
         return CustomRoute(page: const NewAdmission(), offset: _offset);
       case SettingMenusS.routeAddress:

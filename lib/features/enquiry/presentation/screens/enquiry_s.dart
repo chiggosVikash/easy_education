@@ -1,5 +1,6 @@
 
 import 'package:easy_education/features/create_institute/presentation/widgets/create_button_w.dart';
+import 'package:easy_education/features/enquiry/data/models/enquiry_model.dart';
 import 'package:easy_education/features/enquiry/presentation/providers/add_enquiry_p.dart';
 import 'package:easy_education/features/enquiry/presentation/providers/save_enquiry_p.dart';
 import 'package:easy_education/features/enquiry/presentation/widgets/contact_details.dart';
@@ -15,7 +16,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class EnquiryS extends ConsumerStatefulWidget{
   static const routeAddress = "/enquiry";
 
-  const EnquiryS({super.key});
+  final EnquiryModel? _enquiryModel;
+
+  const EnquiryS({super.key, EnquiryModel? enquiryModel})
+      : _enquiryModel = enquiryModel;
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _EnquirySState();
 
@@ -66,6 +70,9 @@ class _EnquirySState extends ConsumerState<EnquiryS>{
   @override
   void initState() {
     super.initState();
+    if(widget._enquiryModel != null){
+      _assignFields(widget._enquiryModel!);
+    }
     Future((){
       ref.invalidate(addEnquiryProvider);
       ref.read(getSettingsProvider.notifier).getSettings("Batch").then((settings){
@@ -75,6 +82,26 @@ class _EnquirySState extends ConsumerState<EnquiryS>{
         ref.read(addEnquiryProvider.notifier).addClassOrBatch(settings.first.name);
       });
     });
+  }
+
+  void _assignFields(EnquiryModel enquiryModel){
+    _fatherEmailController.text = enquiryModel.contactDetails.fatherEmail ?? "";
+    _fatherNameController.text = enquiryModel.studentDetails.fatherName;
+    _fatherOccupationController.text = enquiryModel.studentDetails.fatherOccupation ?? "";
+    _fatherPhoneController.text = enquiryModel.contactDetails.fatherPhone ?? "";
+    _motherEmailController.text = enquiryModel.contactDetails.motherEmail ?? "";
+    _motherNameController.text = enquiryModel.studentDetails.motherName ;
+    _motherOccupationController.text = enquiryModel.studentDetails.motherOccupation ?? "";
+    _motherPhoneController.text = enquiryModel.contactDetails.motherPhone ?? "";
+    _nameController.text = enquiryModel.studentDetails.fullName;
+    _permanentAddressController.text = enquiryModel.studentDetails.permAddress;
+    _presentAddressController.text = enquiryModel.studentDetails.tempAddress;
+    _schoolNameController.text = enquiryModel.studentDetails.currentSchool;
+    _emailController.text = enquiryModel.contactDetails.email ;
+    _phoneController.text = enquiryModel.contactDetails.phone;
+
+    ref.read(addEnquiryProvider.notifier).addClassOrBatch(enquiryModel.studentDetails.currentClass);
+
   }
 
   @override

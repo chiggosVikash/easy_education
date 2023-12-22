@@ -1,4 +1,5 @@
 import 'package:easy_education/features/admission/presentation/widgets/basic_details.dart';
+import 'package:easy_education/features/admission/presentation/widgets/documents_info_w.dart';
 import 'package:easy_education/features/admission/presentation/widgets/medical_info.dart';
 import 'package:easy_education/features/admission/presentation/widgets/office_use_details.dart';
 import 'package:easy_education/features/admission/presentation/widgets/present_address.dart';
@@ -29,9 +30,9 @@ class _NewAdmissionState extends State<NewAdmission> {
             OfficeUseDetails(),
             StudentImage(),
           ],),
-          const BasicDetails(),
           SizedBox(height: context.height*_verSpace,),
-          const PresentAddress(),
+          const DocumentInfoW(),
+          // const PresentAddress(),
           SizedBox(height: context.height*_verSpace,),
           MedicalInfo(verSpace: _verSpace),
           SizedBox(height: context.height*.1,)
