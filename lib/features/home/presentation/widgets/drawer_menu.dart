@@ -25,7 +25,7 @@ class DrawerMenu extends StatelessWidget {
             },),
           ListTile(title: const Text("New Admission"),
             onTap: (){
-              Navigator.pushNamed(context, NewAdmission.routeAddress);
+              Navigator.pushNamed(context, NewAdmissionS.routeAddress);
 
             },),
 

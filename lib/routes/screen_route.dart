@@ -28,8 +28,9 @@ class ScreenRoute{
       case EnquiryS.routeAddress:
         final args = settings.arguments as EnquiryModel?;
         return CustomRoute(page: EnquiryS(enquiryModel: args,), offset: _offset);
-      case NewAdmission.routeAddress:
-        return CustomRoute(page: const NewAdmission(), offset: _offset);
+      case NewAdmissionS.routeAddress:
+        final args  = settings.arguments as NewAdmissionArgs;
+        return CustomRoute(page: NewAdmissionS(args: args,), offset: _offset);
       case SettingMenusS.routeAddress:
         return CustomRoute(page: const SettingMenusS(), offset: _offset);
       case ViewMasterSettingsS.routeAddress:

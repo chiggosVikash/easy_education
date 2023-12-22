@@ -4,18 +4,26 @@ import 'package:easy_education/features/admission/presentation/widgets/medical_i
 import 'package:easy_education/features/admission/presentation/widgets/office_use_details.dart';
 import 'package:easy_education/features/admission/presentation/widgets/present_address.dart';
 import 'package:easy_education/features/admission/presentation/widgets/student_image.dart';
+import 'package:easy_education/features/enquiry/data/models/enquiry_model.dart';
 import 'package:easy_education/utils/extensions/context_extension.dart';
 import 'package:flutter/material.dart';
 
-class NewAdmission extends StatefulWidget {
-  static const routeAddress = "/newAdmission";
-  const NewAdmission({super.key});
-
-  @override
-  State<NewAdmission> createState() => _NewAdmissionState();
+@immutable
+class NewAdmissionArgs{
+  final EnquiryModel? enquiryModel;
+  const NewAdmissionArgs({this.enquiryModel});
 }
 
-class _NewAdmissionState extends State<NewAdmission> {
+class NewAdmissionS extends StatefulWidget {
+  static const routeAddress = "/newAdmission";
+  final NewAdmissionArgs _args;
+  const NewAdmissionS({super.key,required NewAdmissionArgs args}):_args = args;
+
+  @override
+  State<NewAdmissionS> createState() => _NewAdmissionSState();
+}
+
+class _NewAdmissionSState extends State<NewAdmissionS> {
   final double _verSpace  =.02;
   @override
   Widget build(BuildContext context) {

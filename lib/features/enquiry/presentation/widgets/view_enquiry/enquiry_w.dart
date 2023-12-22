@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:easy_education/features/admission/presentation/screens/new_admission_s.dart';
 import 'package:easy_education/utils/extensions/date_format_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -87,7 +88,11 @@ class _EnquiryWState extends ConsumerState<EnquiryW> {
                 ?
                   const Icon(Icons.check,color: Colors.green,)
                 :
-                  FilledButton.tonal(onPressed: (){}, child: const Text("Admission")),
+                  FilledButton.tonal(onPressed: (){
+                    Navigator.pushNamed(context, NewAdmissionS.routeAddress,
+                    arguments: NewAdmissionArgs(enquiryModel: widget._enquiries[index])
+                    );
+                  }, child: const Text("Admission")),
           ),
         ),
       );

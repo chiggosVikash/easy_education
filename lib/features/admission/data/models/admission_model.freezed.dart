@@ -20,6 +20,7 @@ AdmissionModel _$AdmissionModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AdmissionModel {
+  int get admissionYear => throw _privateConstructorUsedError;
   String get formNo => throw _privateConstructorUsedError;
   String get registrationNo => throw _privateConstructorUsedError;
   String get registrationDate => throw _privateConstructorUsedError;
@@ -42,7 +43,8 @@ abstract class $AdmissionModelCopyWith<$Res> {
       _$AdmissionModelCopyWithImpl<$Res, AdmissionModel>;
   @useResult
   $Res call(
-      {String formNo,
+      {int admissionYear,
+      String formNo,
       String registrationNo,
       String registrationDate,
       String? imageUrl,
@@ -66,6 +68,7 @@ class _$AdmissionModelCopyWithImpl<$Res, $Val extends AdmissionModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? admissionYear = null,
     Object? formNo = null,
     Object? registrationNo = null,
     Object? registrationDate = null,
@@ -74,6 +77,10 @@ class _$AdmissionModelCopyWithImpl<$Res, $Val extends AdmissionModel>
     Object? medicalInfo = null,
   }) {
     return _then(_value.copyWith(
+      admissionYear: null == admissionYear
+          ? _value.admissionYear
+          : admissionYear // ignore: cast_nullable_to_non_nullable
+              as int,
       formNo: null == formNo
           ? _value.formNo
           : formNo // ignore: cast_nullable_to_non_nullable
@@ -127,7 +134,8 @@ abstract class _$$AdmissionModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String formNo,
+      {int admissionYear,
+      String formNo,
       String registrationNo,
       String registrationDate,
       String? imageUrl,
@@ -151,6 +159,7 @@ class __$$AdmissionModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? admissionYear = null,
     Object? formNo = null,
     Object? registrationNo = null,
     Object? registrationDate = null,
@@ -159,6 +168,10 @@ class __$$AdmissionModelImplCopyWithImpl<$Res>
     Object? medicalInfo = null,
   }) {
     return _then(_$AdmissionModelImpl(
+      admissionYear: null == admissionYear
+          ? _value.admissionYear
+          : admissionYear // ignore: cast_nullable_to_non_nullable
+              as int,
       formNo: null == formNo
           ? _value.formNo
           : formNo // ignore: cast_nullable_to_non_nullable
@@ -191,7 +204,8 @@ class __$$AdmissionModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AdmissionModelImpl implements _AdmissionModel {
   _$AdmissionModelImpl(
-      {required this.formNo,
+      {required this.admissionYear,
+      required this.formNo,
       required this.registrationNo,
       required this.registrationDate,
       this.imageUrl,
@@ -201,6 +215,8 @@ class _$AdmissionModelImpl implements _AdmissionModel {
   factory _$AdmissionModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$AdmissionModelImplFromJson(json);
 
+  @override
+  final int admissionYear;
   @override
   final String formNo;
   @override
@@ -218,7 +234,7 @@ class _$AdmissionModelImpl implements _AdmissionModel {
 
   @override
   String toString() {
-    return 'AdmissionModel(formNo: $formNo, registrationNo: $registrationNo, registrationDate: $registrationDate, imageUrl: $imageUrl, studentDetails: $studentDetails, medicalInfo: $medicalInfo)';
+    return 'AdmissionModel(admissionYear: $admissionYear, formNo: $formNo, registrationNo: $registrationNo, registrationDate: $registrationDate, imageUrl: $imageUrl, studentDetails: $studentDetails, medicalInfo: $medicalInfo)';
   }
 
   @override
@@ -226,6 +242,8 @@ class _$AdmissionModelImpl implements _AdmissionModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AdmissionModelImpl &&
+            (identical(other.admissionYear, admissionYear) ||
+                other.admissionYear == admissionYear) &&
             (identical(other.formNo, formNo) || other.formNo == formNo) &&
             (identical(other.registrationNo, registrationNo) ||
                 other.registrationNo == registrationNo) &&
@@ -241,8 +259,8 @@ class _$AdmissionModelImpl implements _AdmissionModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, formNo, registrationNo,
-      registrationDate, imageUrl, studentDetails, medicalInfo);
+  int get hashCode => Object.hash(runtimeType, admissionYear, formNo,
+      registrationNo, registrationDate, imageUrl, studentDetails, medicalInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -261,7 +279,8 @@ class _$AdmissionModelImpl implements _AdmissionModel {
 
 abstract class _AdmissionModel implements AdmissionModel {
   factory _AdmissionModel(
-      {required final String formNo,
+      {required final int admissionYear,
+      required final String formNo,
       required final String registrationNo,
       required final String registrationDate,
       final String? imageUrl,
@@ -271,6 +290,8 @@ abstract class _AdmissionModel implements AdmissionModel {
   factory _AdmissionModel.fromJson(Map<String, dynamic> json) =
       _$AdmissionModelImpl.fromJson;
 
+  @override
+  int get admissionYear;
   @override
   String get formNo;
   @override

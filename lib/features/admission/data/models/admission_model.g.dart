@@ -8,6 +8,7 @@ part of 'admission_model.dart';
 
 _$AdmissionModelImpl _$$AdmissionModelImplFromJson(Map<String, dynamic> json) =>
     _$AdmissionModelImpl(
+      admissionYear: json['admissionYear'] as int,
       formNo: json['formNo'] as String,
       registrationNo: json['registrationNo'] as String,
       registrationDate: json['registrationDate'] as String,
@@ -21,6 +22,7 @@ _$AdmissionModelImpl _$$AdmissionModelImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$AdmissionModelImplToJson(
         _$AdmissionModelImpl instance) =>
     <String, dynamic>{
+      'admissionYear': instance.admissionYear,
       'formNo': instance.formNo,
       'registrationNo': instance.registrationNo,
       'registrationDate': instance.registrationDate,

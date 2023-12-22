@@ -10,6 +10,7 @@ part 'admission_model.g.dart';
 @freezed
 class AdmissionModel with _$AdmissionModel{
   factory AdmissionModel({
+    required int admissionYear,
     required String formNo,
     required String registrationNo,
     required String registrationDate,
